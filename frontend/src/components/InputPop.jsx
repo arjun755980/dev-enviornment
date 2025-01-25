@@ -10,6 +10,8 @@ const InputPop = forwardRef(({ filename, setFilename, setCodeWindows, setShowInp
         js: "javascript",
         py: "python",
         cpp: "cpp",
+        c: "c",
+        ts: "typescript",
         java: "java",
       };
       const lang = langMap[extension] || "plaintext";
