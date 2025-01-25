@@ -38,8 +38,8 @@ async def execute_code(data: CodeRequest):
 
     file_extension = extensions[language]
     unique_id = str(uuid.uuid4())
-    
-    file_name = f"backend/temp/{unique_id}.{file_extension}"
+
+    file_name = f"temp/{unique_id}.{file_extension}"
     
     try:
         abs_file_path = os.path.abspath(file_name)
@@ -54,7 +54,7 @@ async def execute_code(data: CodeRequest):
         # Spin up the Docker container to execute the code
         result = run_code_in_docker(abs_file_path, language)
 
-        #os.remove(file_name)
+        os.remove(file_name)
 
         return {"message": "Code executed", "output": result}
     except Exception as e:
