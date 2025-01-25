@@ -15,16 +15,21 @@ function CodeOutput({ output }) {
         overflowY: "auto",
       }}
     >
-      <h3 style={{
-        marginBottom :"4px",
-        marginTop : "4px",
-      }}>Output:</h3>
+      <h3
+        style={{
+          marginBottom: "4px",
+          marginTop: "4px",
+        }}
+      >
+        Output:
+      </h3>
       <pre
         style={{
           fontSize: "14px",
-          marginTop : "0px",
-          color : "#000000",
-          marginLeft : "2px",
+          marginTop: "0px",
+          color: "#000000",
+          marginBottom: "0px",
+          marginLeft: "2px",
         }}
       >
         {output}

@@ -40,6 +40,7 @@ function CodeEditor({ lang, setCode }) {
       height="60%"
       width="100%"
       defaultLanguage={lang}
+      automaticLayout="true"
       value={value}
       theme="vs-dark"
       onChange={handleEditorChange}
