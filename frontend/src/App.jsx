@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect, useRef } from "react";
+import "./index.css";
+import "./App.css";
+import CodeWindow from "./components/CodeWindow";
+import InputPop from "./components/InputPop";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [codeWindows, setCodeWindows] = useState([]);
+  const [showInput, setShowInput] = useState(false);
+  const [filename, setFilename] = useState("");
+  const inputRef = useRef(null);
+
+  const handleKeyPress = (e) => {
+    if (e.ctrlKey && e.key === "q") {
+      setShowInput((prev) => !prev);
+      setFilename("");
+    }
+  };
+
+  const closeCodeWindow = (filename) => {
+    setCodeWindows((prevWindows) =>
+      prevWindows.filter((win) => win.filename !== filename)
+    );
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="App">
+      {showInput && (
+        <InputPop
+          ref={inputRef}
+          filename={filename}
+          setFilename={setFilename}
+          setCodeWindows={setCodeWindows}
+          setShowInput={setShowInput}
+        />
+      )}
+
+      {codeWindows.map((window, index) => (
+        <div
+          key={index}
+          style={{
+            display: "inline-block",
+          }}
+        >
+          <CodeWindow
+            filename={window.filename}
+            lang={window.lang}
+            closeCodeWindow={() => closeCodeWindow(window.filename)}
+          />
+        </div>
+      ))}
+    </div>
+  );
 }
 
-export default App
+export default App;
