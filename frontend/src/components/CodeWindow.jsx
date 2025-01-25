@@ -11,6 +11,7 @@ function CodeWindow({ filename, lang, closeCodeWindow }) {
 
   const runCode = async () => {
     setIsLoading(true);
+    console.log(code);
     try {
       const response = await fetch("http://127.0.0.1:8000/execute_code", {
         method: "POST",

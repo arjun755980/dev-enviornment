@@ -28,9 +28,9 @@ function CodeEditor({ lang, setCode }) {
   }
   const [value, setValue] = useState(initialCode);
 
-  const handleEditorChange = (value) => {
-    setValue(value);
-    setCode(value);
+  const handleEditorChange = (newvalue) => {
+    setValue(newvalue);
+    setCode(newvalue);
   };
 
   console.log(lang);
@@ -42,7 +42,7 @@ function CodeEditor({ lang, setCode }) {
       defaultLanguage={lang}
       value={value}
       theme="vs-dark"
-      onBlur={handleEditorChange}
+      onChange={handleEditorChange}
       options={{
         minimap: {
           enabled: false,
