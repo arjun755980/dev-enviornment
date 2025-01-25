@@ -25,6 +25,7 @@ function CodeWindow({ filename, lang, closeCodeWindow }) {
       });
 
       const data = await response.json();
+      console.log(data.output);
       setOutput(data.output);
     } catch (error) {
       console.log(error);
