@@ -3,6 +3,7 @@ import "./index.css";
 import "./App.css";
 import CodeWindow from "./components/CodeWindow";
 import InputPop from "./components/InputPop";
+import Instruc from "./components/Instruc";
 
 function App() {
   const [codeWindows, setCodeWindows] = useState([]);
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="App">
+      {codeWindows.length === 0 && <Instruc />}
       {showInput && (
         <InputPop
           ref={inputRef}
