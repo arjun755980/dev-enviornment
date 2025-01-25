@@ -8,12 +8,19 @@ function CodeOutput({ output }) {
         marginTop: "10px",
         padding: "10px",
         backgroundColor: "var(--third)",
-        color: "#dcdcdc", 
+        color: "#dcdcdc",
         overflow: "auto",
       }}
     >
       <h3>Output:</h3>
-      <pre>{output}</pre>
+      <pre
+        style={{
+          fontSize: "12px",
+          marginTop : "0px",
+        }}
+      >
+        {output}
+      </pre>
     </div>
   );
 }

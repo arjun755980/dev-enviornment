@@ -10,17 +10,17 @@ function CodeEditor({ lang, setCode }) {
       initialCode = "# You may start now.";
       break;
 
-    case "cpp":
+    case "c":
       initialCode = "/* You may start now. */";
       break;
 
     case "javascript":
-      initialCode = "// You may start now.";
-      break;
-
-    case "java":
       initialCode = "/* You may start now. */";
       break;
+
+    case "typescript":
+      initialCode = "/* You may start now. */";
+      break;  
 
     default:
       initialCode = "";
